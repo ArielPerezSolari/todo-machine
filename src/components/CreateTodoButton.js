@@ -1,10 +1,18 @@
 
 
-function CreateTodoButton(){
+function CreateTodoButton(props){
+    const handleClick = ()=> {
+        props.setOpenModal(prevState => !prevState)
+        
+    }
     return(
-        <button className=" bg-cyan-500 shadow-blue-500/50  rounded border-solid h-10 w-10 ring-offset-2 ring-2">+</button>
+        <button 
+        className="absolute top-100 right-10 z-40 bg-cyan-500 shadow-blue-500/50  rounded border-solid h-10 w-10 ring-offset-2 ring-2"
+        onClick={handleClick}
+        >+
+        </button>
     );
 }
 
 
-export default CreateTodoButton
+export {CreateTodoButton}
