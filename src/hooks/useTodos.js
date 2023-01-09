@@ -7,6 +7,7 @@ function useTodos(props) {
   const {
     item: todos,
     saveItem: saveTodos,
+    synchronizeItems : synchronizeTodos,
     loading,
     error,
   } = useLocalStorage('TODOS_V1', []);
@@ -41,15 +42,17 @@ function useTodos(props) {
     saveTodos(newTodos);
   };
 
-  const addTodo = (text) => {
+  const addTodo = (text, setOpenModal) => {
     const newTodos = [...todos]
+    if(text.length > 0){
     newTodos.push({
       completed: false,
       text,
     })
     saveTodos(newTodos)
+    
   }
-  
+}
   return {
       loading,
       error,
@@ -63,7 +66,8 @@ function useTodos(props) {
       openModal,
       setOpenModal,
       saveTodos,
-      addTodo
+      addTodo,
+      synchronizeTodos
     }
 }
 

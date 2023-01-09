@@ -11,10 +11,8 @@ function TodoList(props){
             
             {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
 
-            {props.searchedTodos.map(renderFunction)}
-            <ul className="space-y-10">
-                {props.children}
-            </ul>
+            {(!props.loading && !props.error) && props.searchedTodos.map(renderFunction)}
+
         </section>
     );
 }

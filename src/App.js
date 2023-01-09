@@ -12,6 +12,7 @@ import { useTodos } from './hooks/useTodos';
 import { TodosError } from './components/TodosError';
 import { TodosLoading } from './components/TodosLoading';
 import { EmptyTodos } from './components/EmptyTodos';
+import { ChangeAlert } from './components/ChangeAlert';
 
 function App() {
   const  {
@@ -25,11 +26,14 @@ function App() {
     totalTodos,
     completeTodos,
     searchValue,
-    setSearchValue
+    setSearchValue,
+    addTodo,
+    synchronizeTodos
     } =  useTodos()
     return (
       <React.Fragment>
-        <TodoHeader loading={loading}>
+        <TodoHeader 
+          loading={loading}>
           <TodoCounter
             totalTodos={totalTodos}
             completeTodos={completeTodos}
@@ -66,14 +70,21 @@ function App() {
 
             {!!openModal && (
               <Modal>
-              <TodoForm />
+              <TodoForm 
+                addTodo={addTodo}
+                setOpenModal={setOpenModal}
+              />
             </Modal>
             )} 
         <CreateTodoButton 
         setOpenModal={setOpenModal}
         openModal={openModal}
         />
+                <ChangeAlert 
+                  synchronize={synchronizeTodos}
+                />
         </div>
+
       </React.Fragment>
     );
 }

@@ -1,8 +1,8 @@
 import {  useState } from "react"
-import {  useTodos } from "../hooks/useTodos"
 
-function TodoForm() {
-    const { addTodo, setOpenModal } = useTodos()
+
+function TodoForm({ addTodo, setOpenModal }) {
+
     const [newTodoValue, setNewTodoValue] = useState('')
 
     const onChange = (e) => {
@@ -17,7 +17,7 @@ function TodoForm() {
         e.preventDefault()
         addTodo(newTodoValue)
         setNewTodoValue('')
-        setOpenModal()
+        setOpenModal(false)
     }
     return(
         <form className="flex flex-col" onSubmit={onSubmit}>
