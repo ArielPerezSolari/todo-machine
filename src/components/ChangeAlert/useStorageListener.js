@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-function useStorageListener({synchronize}) {
+function useStorageListener(synchronize) {
 
       const [storageChange, setStorageChange] = useState(false);
       window.addEventListener('storage', (change) => {
